@@ -83,13 +83,13 @@ public class JfrmPrincipal extends Application implements Initializable{
         }
     }
     public void im_clinicaOnAction (Event e){
-        mostrarformulario("/com/qomtec/views/frm_clinica.fxml","Clinica::.");
+        Global.mostrarformulario("/com/qomtec/views/frm_clinica.fxml","Clinica::.",getClass());
     }
     public void im_odontologOnAction (Event e){
-        mostrarformulario("/com/qomtec/views/frm_odontologo.fxml","Odontólogo");
+        Global.mostrarformulario("/com/qomtec/views/frm_odontologo.fxml","Odontólogo",getClass());
     }
     public void im_pacienteOnAction (Event e){
-        mostrarformulario("/com/DentApp/views/frm_paciente.fxml","Paciente");
+        Global.mostrarformulario("/com/DentApp/views/frm_paciente.fxml","Paciente",getClass());
     }
     public void im_tratamientoOnAction (Event e){
         mostrarformulario("/com/DentApp/views/frm_tipo_tratamiento.fxml","Tipos de tratamiento::.");
