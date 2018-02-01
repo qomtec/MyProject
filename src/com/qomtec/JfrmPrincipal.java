@@ -6,7 +6,10 @@ import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
 import com.qomtec.objects.Usuario;
 import com.qomtec.utils.GenerateKey;
+import com.qomtec.utils.Global;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -80,10 +83,10 @@ public class JfrmPrincipal extends Application implements Initializable{
         }
     }
     public void im_clinicaOnAction (Event e){
-        mostrarformulario("/com/DentApp/views/frm_clinica.fxml","Clinica::.");
+        mostrarformulario("/com/qomtec/views/frm_clinica.fxml","Clinica::.");
     }
     public void im_odontologOnAction (Event e){
-        mostrarformulario("/com/DentApp/views/frm_odontologo.fxml","Odontólogo");
+        mostrarformulario("/com/qomtec/views/frm_odontologo.fxml","Odontólogo");
     }
     public void im_pacienteOnAction (Event e){
         mostrarformulario("/com/DentApp/views/frm_paciente.fxml","Paciente");
@@ -106,13 +109,7 @@ public class JfrmPrincipal extends Application implements Initializable{
     }
     private boolean respuesta = false;
     public void btn_ingresarOnAction(Event e) {
-        respuesta = false;
-        verificarUsuario(txt_usuario.getText().toString().trim());
-        try {
-            Thread.sleep(1800);
-        } catch (InterruptedException e1) {
-            e1.printStackTrace();
-        }
+
         if (respuesta){
             p_principal.setDisable(false);
         }
@@ -149,6 +146,7 @@ public class JfrmPrincipal extends Application implements Initializable{
                     if (txt_usuario.getText().equals(usuario.getUsuario())){
                         if(GenerateKey.getMD5(txt_pass.getText()).equals(usuario.getClave())){
                             respuesta = true;
+                            Global.ID_GENERAL = usuario.getUsuario();
                         }
                     }
                 }
@@ -166,6 +164,22 @@ public class JfrmPrincipal extends Application implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         inicializar();
+        txt_usuario.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (newValue){
+                    respuesta = false;
+                } else{
+
+                    verificarUsuario(txt_usuario.getText().toString().trim());
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
 }
