@@ -14,8 +14,8 @@
     <root id="root">
       <element id="archive" name="MyProject.jar">
         <element id="module-output" name="MyProject" />
-        <element id="library" level="project" name="libs" />
       </element>
+      <element id="file-copy" path="$PROJECT_DIR$/token.json" />
     </root>
   </artifact>
 </component>

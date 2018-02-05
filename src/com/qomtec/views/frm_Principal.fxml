@@ -90,8 +90,8 @@
                   <Image url="/com/qomtec/images/img_wall_1.png" />
                </image>
             </ImageView>
-            <JFXTextField fx:id="txt_usuario" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="366.0" prefHeight="25.0" prefWidth="204.0" promptText="Usuario" unFocusColor="#64afa0" />
-            <JFXPasswordField fx:id="txt_pass" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="423.0" prefHeight="25.0" prefWidth="204.0" promptText="Password" unFocusColor="#64afa0" />
+            <JFXTextField fx:id="txt_usuario" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="366.0" prefHeight="25.0" prefWidth="204.0" promptText="Usuario" unFocusColor="#64afa0" text="chemalug@gmail.com"/>
+            <JFXPasswordField fx:id="txt_pass" focusColor="WHITE" labelFloat="true" layoutX="37.0" layoutY="423.0" prefHeight="25.0" prefWidth="204.0" promptText="Password" unFocusColor="#64afa0" text="123456" />
             <ImageView fitHeight="32.0" fitWidth="200.0" layoutX="4.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="/com/qomtec/images/img_user.png" />

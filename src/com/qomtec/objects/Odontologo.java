@@ -1,6 +1,7 @@
 package com.qomtec.objects;
 
 public class Odontologo {
+
     private String codigo_odontologo;
     private String nombre_odontologo;
     private String colegiado_odontologo;
