@@ -121,7 +121,7 @@ public class JfrmPrincipal extends Application implements Initializable{
             System.out.println();
             FileInputStream serviceAccount = new FileInputStream(  System.getProperty("user.dir")+System.getProperty("file.separator")+"token.json");
             FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
-                    .setDatabaseUrl("https://mi-proyecto-123456.firebaseio.com/")
+                    .setDatabaseUrl("https://myproject-611bb.firebaseio.com/")
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                     .build();
             FirebaseApp.initializeApp(firebaseOptions);
@@ -133,7 +133,7 @@ public class JfrmPrincipal extends Application implements Initializable{
         }
     }
     private void verificarUsuario(String email){
-        DatabaseReference tbl = db.getReference("/tbl_Usuario");
+        DatabaseReference tbl = db.getReference("/tbl_usuario");
         try {
             String valor = GenerateKey.getMD5(email).substring(0,20);
             DatabaseReference  child = tbl.child(valor);
@@ -146,7 +146,8 @@ public class JfrmPrincipal extends Application implements Initializable{
                     if (txt_usuario.getText().equals(usuario.getUsuario())){
                         if(GenerateKey.getMD5(txt_pass.getText()).equals(usuario.getClave())){
                             respuesta = true;
-                            Global.ID_GENERAL = usuario.getUsuario();
+                            Global.ID_EMAIL_GENERAL = usuario.getUsuario();
+                            Global.ID_GENERAL = GenerateKey.getMD5(usuario.getUsuario()).substring(0,20);
                         }
                     }
                 }
