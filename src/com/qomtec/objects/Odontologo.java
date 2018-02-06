@@ -1,22 +1,21 @@
 package com.qomtec.objects;
 
 public class Odontologo {
-
     private String codigo_odontologo;
     private String nombre_odontologo;
     private String colegiado_odontologo;
     private String correo_odontologo;
-    private String password_odontologo;
+    private String clave_odontologo;
 
     public Odontologo() {
     }
 
-    public Odontologo(String codigo_odontologo, String nombre_odontologo, String colegiado_odontologo, String correo_odontologo, String password_odontologo) {
+    public Odontologo(String codigo_odontologo, String nombre_odontologo, String colegiado_odontologo, String correo_odontologo, String clave_odontologo) {
         this.codigo_odontologo = codigo_odontologo;
         this.nombre_odontologo = nombre_odontologo;
         this.colegiado_odontologo = colegiado_odontologo;
         this.correo_odontologo = correo_odontologo;
-        this.password_odontologo = password_odontologo;
+        this.clave_odontologo = clave_odontologo;
     }
 
     public String getCodigo_odontologo() {
@@ -51,12 +50,12 @@ public class Odontologo {
         this.correo_odontologo = correo_odontologo;
     }
 
-    public String getPassword_odontologo() {
-        return password_odontologo;
+    public String getClave_odontologo() {
+        return clave_odontologo;
     }
 
-    public void setPassword_odontologo(String password_odontologo) {
-        this.password_odontologo = password_odontologo;
+    public void setClave_odontologo(String clave_odontologo) {
+        this.clave_odontologo = clave_odontologo;
     }
 
     @Override
@@ -66,7 +65,7 @@ public class Odontologo {
         sb.append(", nombre_odontologo='").append(nombre_odontologo).append('\'');
         sb.append(", colegiado_odontologo='").append(colegiado_odontologo).append('\'');
         sb.append(", correo_odontologo='").append(correo_odontologo).append('\'');
-        sb.append(", password_odontologo='").append(password_odontologo).append('\'');
+        sb.append(", clave_odontologo='").append(clave_odontologo).append('\'');
         sb.append('}');
         return sb.toString();
     }
