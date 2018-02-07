@@ -1,6 +1,7 @@
 package com.qomtec.controllers;
 
 import com.jfoenix.controls.JFXTextField;
+import com.qomtec.utils.Global;
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -15,9 +16,6 @@ import java.io.IOException;
 public class FrmPaciente extends Application {
     @FXML
     private JFXTextField txt_buscar;
-    public static void main(String[] args) {
-        launch(args);
-    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -51,10 +49,10 @@ public class FrmPaciente extends Application {
 
     }
     public void btn_nuevoOnAction(Event e){
-        mostrarformulario("../frm_p_paciente.fxml","Paciente::.");
+        Global.mostrarformulario("../frm_p_paciente.fxml","Paciente::.",getClass());
     }
     public void btn_modificarOnAction(Event e){
-        mostrarformulario("../frm_p_paciente.fxml","Paciente::.");
+        Global.mostrarformulario("../frm_p_paciente.fxml","Paciente::.",getClass());
     }
     public void btn_eliminarOnAction(Event e){
 
