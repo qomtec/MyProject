@@ -10,6 +10,7 @@ import java.io.IOException;
 
 public class Global {
 
+    public static String ID_EMAIL_GENERAL;
     public static String ID_GENERAL;
     public static void mostrarformulario(String formulario, String titulo,Class cc){
         try {
