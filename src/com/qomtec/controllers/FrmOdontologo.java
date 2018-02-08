@@ -16,14 +16,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Observable;
@@ -31,8 +30,8 @@ import java.util.ResourceBundle;
 import java.util.concurrent.CountDownLatch;
 
 
-public class FrmOdontologo extends Application implements Initializable{
-    @FXML private JFXTextField txt_buscar;
+public class FrmOdontologo implements Initializable{
+    @FXML private TextField txt_buscar;
     @FXML private TableView tv_lista_odontologo;
     @FXML private TableColumn tc_codigo_odontologo;
     @FXML private TableColumn tc_nombre_odontologo;
@@ -40,48 +39,12 @@ public class FrmOdontologo extends Application implements Initializable{
     @FXML private TableColumn tc_usuario_odontologo;
     @FXML private TableColumn tc_clave_odontologo;
 
-    public static void main(String[] args) {
-        launch(args);
-
-    }
-    @Override
-    public void start(Stage primaryStage) {
-
-    }
-    @FXML
-    protected void initialize(){
-        txt_buscar.textProperty().addListener((obs, oldText, newText) -> {
-            System.out.println(txt_buscar.getText());
-        });
-
-
-    }
-
-    private void mostrarformulario(String formulario, String titulo){
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(formulario));
-            Parent root1 = (Parent) loader.load();
-            Scene scene = new Scene(root1);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle(titulo);
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-    }
-    public void btn_buscarOnAction(Event e){
-
-    }
     public void btn_nuevoOnAction(Event e){
-        mostrarformulario("/com/qomtec/views/frm_p_odontologo.fxml","Odontólogo::.");
+        Global.mostrarformulario("/com/qomtec/views/frm_p_odontologo.fxml","Odontólogo::.",getClass());
     }
     public void btn_modificarOnAction(Event e){
         if (objeto!=null){
-            mostrarformulario("/com/qomtec/views/frm_p_odontologo.fxml","Odontólogo::.");
+            Global.mostrarformulario("/com/qomtec/views/frm_p_odontologo.fxml","Odontólogo::.",getClass());
         }
 
     }
@@ -94,7 +57,6 @@ public class FrmOdontologo extends Application implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         db = FirebaseDatabase.getInstance();
         tv_lista_odontologo.setEditable(true);
-
         tv_lista_odontologo.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
@@ -123,10 +85,45 @@ public class FrmOdontologo extends Application implements Initializable{
             });
             return row;
         });
+        txt_buscar.textProperty().addListener((obs, oldText, newText) -> {
+            buscar(txt_buscar.getText());
+            System.out.println(txt_buscar.getText());
+        });
         listarOdontologo();
     }
+    public void buscar(String texti){
+        DatabaseReference tbl = db.getReference("/tbl_odontologo/"+ Global.ID_GENERAL +"/");
+        DatabaseReference busqueda = (DatabaseReference) tbl.orderByChild("nombre_odontologo").startAt(texti);
+        busqueda.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Odontologo odontologo = dataSnapshot.getValue(Odontologo.class);
+                System.out.println(odontologo);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
     public void listarOdontologo(){
-        DatabaseReference tbl = db.getReference("/tbl_clinica/"+ Global.ID_GENERAL +"/tbl_odontologo/");
+        DatabaseReference tbl = db.getReference("/tbl_odontologo/"+ Global.ID_GENERAL +"/");
         try {
             ObservableList<Odontologo> listaOdontologos = FXCollections.observableArrayList();
             tbl.addChildEventListener(new ChildEventListener() {
@@ -134,7 +131,6 @@ public class FrmOdontologo extends Application implements Initializable{
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     Odontologo odontologo = dataSnapshot.getValue(Odontologo.class);
                     listaOdontologos.add(odontologo);
-                    System.out.println(odontologo);
                     listar(listaOdontologos);
                 }
 
@@ -142,7 +138,6 @@ public class FrmOdontologo extends Application implements Initializable{
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                     Odontologo odontologo = dataSnapshot.getValue(Odontologo.class);
                     listaOdontologos.add(odontologo);
-                    System.out.println(odontologo);
                     listar(listaOdontologos);
                 }
 

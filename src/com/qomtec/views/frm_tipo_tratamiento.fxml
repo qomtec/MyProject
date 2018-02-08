@@ -9,14 +9,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qomtec.controllers.FrmPaciente">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="815.0"
+            xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qomtec.controllers.FrmTipoTratamiento">
    <children>
-      <Label layoutX="243.0" layoutY="30.0" text="Administrar Paciente">
+      <Label layoutX="210.0" layoutY="36.0" text="Administrar tratamientos">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Pane layoutX="14.0" layoutY="98.0" prefHeight="391.0" prefWidth="786.0">
+      <Pane layoutX="15.0" layoutY="95.0" prefHeight="391.0" prefWidth="786.0">
          <children>
             <JFXTextField fx:id="txt_buscar" labelFloat="true" layoutX="14.0" layoutY="28.0" prefHeight="25.0" prefWidth="248.0" promptText="busqueda" />
             <JFXButton fx:id="btn_buscar" layoutX="270.0" layoutY="25.0" onAction="#btn_buscarOnAction" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #5BC0DE;" text="Buscar" textFill="WHITE">
@@ -39,19 +41,10 @@
                   <Font size="14.0" />
                </font>
             </JFXButton>
-            <TableView fx:id="tv_lista_paciente" layoutX="14.0" layoutY="80.0" prefHeight="292.0" prefWidth="765.0">
+            <TableView fx:id="tv_lista_tratamientos" layoutX="14.0" layoutY="80.0" prefHeight="292.0" prefWidth="765.0">
                <columns>
-                  <TableColumn fx:id="tc_codigo_paciente" editable="false" prefWidth="67.0" text="Código" />
-                  <TableColumn fx:id="tc_nombre_paciente" editable="false" minWidth="0.0" prefWidth="225.0" text="Nombre" />
-                  <TableColumn fx:id="tc_apellido_paciente" editable="false" prefWidth="238.0" text="Apellido" />
-                  <TableColumn fx:id="tc_telefono_paciente" editable="false" prefWidth="111.0" text="Télefono" />
-                  <TableColumn fx:id="tc_correo_paciente" editable="false" prefWidth="123.0" text="Correo" />
-                  <TableColumn fx:id="tc_edad_paciente" editable="false" prefWidth="123.0" text="Edad" />
-                  <TableColumn fx:id="tc_fecha_nacimiento_paciente" editable="false" prefWidth="123.0" text="Fecha de Nacimiento" />
-                  <TableColumn fx:id="tc_genero_paciente" editable="false" prefWidth="123.0" text="Genero" />
-                  <TableColumn fx:id="tc_estado_civil_paciente" editable="false" prefWidth="123.0" text="Estado civil" />
-                  <TableColumn fx:id="tc_ocupacion_paciente" editable="false" prefWidth="123.0" text="Ocupación" />
-                  <TableColumn fx:id="tc_alergias_paciente" editable="false" prefWidth="123.0" text="Alergias" />
+                  <TableColumn fx:id="tc_codigo_tipo_tratamiento" editable="false" prefWidth="168.0" text="Código" />
+                  <TableColumn fx:id="tc_nombre_tipo_tratamiento" editable="false" minWidth="0.0" prefWidth="596.0" text="Nombre" />
                </columns>
             </TableView>
          </children>
