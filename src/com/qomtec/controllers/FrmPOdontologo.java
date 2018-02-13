@@ -45,7 +45,7 @@ public class FrmPOdontologo extends Application implements Initializable{
     FirebaseDatabase db ;
     private void guardarOdontologo(Odontologo odontologo) {
         db = FirebaseDatabase.getInstance();
-        DatabaseReference tbl = db.getReference("/tbl_clinica/"+ Global.ID_GENERAL + "/tbl_odontologo");
+        DatabaseReference tbl = db.getReference("/tbl_odontologo/"+ Global.ID_GENERAL +"/");
         DatabaseReference row = tbl.child(odontologo.getCodigo_odontologo().substring(0,20));
         CountDownLatch count = new CountDownLatch(1);
         row.setValue(odontologo, new DatabaseReference.CompletionListener() {

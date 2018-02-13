@@ -23,7 +23,7 @@
       <JFXTextField fx:id="txt_telefono_paciente" labelFloat="true" layoutX="58.0" layoutY="210.0" prefHeight="25.0" prefWidth="231.0" promptText="Télefono de paciente" />
       <JFXTextField fx:id="txt_correo_paciente" labelFloat="true" layoutX="57.0" layoutY="260.0" prefHeight="25.0" prefWidth="231.0" promptText="Correo electrónico" />
       <JFXTextField fx:id="txt_edad_paciente" labelFloat="true" layoutX="57.0" layoutY="310.0" prefHeight="25.0" prefWidth="231.0" promptText="Edad del paciente" />
-      <JFXDatePicker defaultColor="#5bc0de" layoutX="379.0" layoutY="110.0" prefHeight="25.0" prefWidth="268.0" promptText="Fecha de nacimiento" />
+      <JFXDatePicker fx:id="txt_fecha_nacimiento_paciente" defaultColor="#5bc0de" layoutX="379.0" layoutY="110.0" prefHeight="25.0" prefWidth="268.0" promptText="Fecha de nacimiento" />
       <JFXComboBox fx:id="cb_genero_paciente" labelFloat="true" layoutX="379.0" layoutY="160.0" prefHeight="25.0" prefWidth="231.0" promptText="Género del paciente">
          <items>
             <FXCollections fx:factory="observableArrayList">
@@ -33,7 +33,7 @@
             </FXCollections>
          </items>
       </JFXComboBox>
-      <JFXComboBox fx:id="cb_estado_civil" labelFloat="true" layoutX="379.0" layoutY="210.0" prefHeight="25.0" prefWidth="231.0" promptText="Estado civil">
+      <JFXComboBox fx:id="cb_estado_civil_paciente" labelFloat="true" layoutX="379.0" layoutY="210.0" prefHeight="25.0" prefWidth="231.0" promptText="Estado civil">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Soltero(a)" />
@@ -44,6 +44,7 @@
          </items>
       </JFXComboBox>
       <JFXTextField fx:id="txt_ocupacion" labelFloat="true" layoutX="379.0" layoutY="260.0" prefHeight="25.0" prefWidth="231.0" promptText="Ocupación" />
+      <JFXTextArea fx:id="txt_alergias" labelFloat="true" layoutX="379.0" layoutY="305.0" prefHeight="60.0" prefWidth="231.0" promptText="Alergias, otros." />
       <JFXButton fx:id="btn_guardar" layoutX="223.0" layoutY="406.0" onAction="#btn_guardarOnAction" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #5BC0DE;" text="Guardar" textFill="WHITE">
          <font>
             <Font size="14.0" />
@@ -54,6 +55,6 @@
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXTextArea fx:id="txt_alergias" labelFloat="true" layoutX="379.0" layoutY="305.0" prefHeight="60.0" prefWidth="231.0" promptText="Alergias, otros." />
+
    </children>
 </AnchorPane>

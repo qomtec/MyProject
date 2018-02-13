@@ -89,10 +89,10 @@ public class JfrmPrincipal extends Application implements Initializable{
         Global.mostrarformulario("/com/qomtec/views/frm_odontologo.fxml","Odontólogo",getClass());
     }
     public void im_pacienteOnAction (Event e){
-        Global.mostrarformulario("/com/DentApp/views/frm_paciente.fxml","Paciente",getClass());
+        Global.mostrarformulario("/com/qomtec/views/frm_paciente.fxml","Paciente",getClass());
     }
     public void im_tratamientoOnAction (Event e){
-        mostrarformulario("/com/DentApp/views/frm_tipo_tratamiento.fxml","Tipos de tratamiento::.");
+        Global.mostrarformulario("/com/qomtec/views/frm_tipo_tratamiento.fxml","Tipos de tratamiento::.",getClass());
     }
     public void im_pagoOnAction (Event e){
         Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
@@ -100,7 +100,7 @@ public class JfrmPrincipal extends Application implements Initializable{
         mensaje.showAndWait();
     }
     public void im_opcionesOnAction (Event e){
-        mostrarformulario("/com/DentApp/views/frm_opciones.fxml","Opciones::.");
+        Global.mostrarformulario("/com/qomtec/views/frm_opciones.fxml","Opciones::.",getClass());
     }
     public void btn_salirOnAction (Event e){
         Stage stage = (Stage) btn_salir.getScene().getWindow();
@@ -126,6 +126,7 @@ public class JfrmPrincipal extends Application implements Initializable{
                     .build();
             FirebaseApp.initializeApp(firebaseOptions);
             db = FirebaseDatabase.getInstance();
+            Global.DB = db;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
